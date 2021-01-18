@@ -32,6 +32,7 @@ function addToCart(event) {
   const price = card.querySelector(".fruitPrice").innerText;
   const imgSrc = card.querySelector(".card-img-top").src;
   addItemToCart(title, price, imgSrc);
+  updateCartTotal();
 }
 
 function addItemToCart(title, price, imgSrc) {
@@ -60,6 +61,12 @@ function addItemToCart(title, price, imgSrc) {
   `;
   cartRow.innerHTML = cartRowContent;
   cartItems.appendChild(cartRow);
+  cartRow
+    .querySelector(".btn-danger")
+    .addEventListener("click", removeFromCart);
+  cartRow
+    .querySelector(".cartQuantity")
+    .addEventListener("change", changedQuantity);
 }
 
 function removeFromCart(event) {
