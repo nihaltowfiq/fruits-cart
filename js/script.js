@@ -64,6 +64,7 @@ function addItemToCart(title, price, imgSrc) {
   cartRow
     .querySelector(".cartQuantity")
     .addEventListener("change", changedQuantity);
+  document.querySelector(".purchaseBtn").removeAttribute("disabled");
 }
 
 function removeFromCart(event) {
@@ -96,8 +97,12 @@ const updateCartTotal = function () {
 };
 
 function purchaseCart() {
-  alert("Thanks You For Your Purchase!");
   const cartItems = document.querySelector(".cartItems");
+
+  if (cartItems.hasChildNodes()) {
+    alert("Thanks You For Your Purchase!");
+    document.querySelector(".purchaseBtn").setAttribute("disabled", "");
+  }
 
   while (cartItems.hasChildNodes()) {
     cartItems.removeChild(cartItems.firstChild);
