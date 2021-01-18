@@ -38,10 +38,17 @@ function addItemToCart(title, price, imgSrc) {
   const cartItems = document.querySelector(".cartItems");
   const cartRow = document.createElement("tr");
   cartRow.className = "cartRow";
+  const cartItemNames = cartItems.getElementsByClassName("cartTitle");
+  for (let i = 0; i < cartItemNames.length; i++) {
+    if (cartItemNames[i].innerText == title) {
+      alert("This Item is Already Added to the Cart!");
+      return;
+    }
+  }
   const cartRowContent = `
     <td>
       <img class="cartImg rounded" src="${imgSrc}" alt="" />
-      <span>${title}</span>
+      <span class="cartTitle">${title}</span>
     </td>
     <td class="cartPrice">$${price}</td>
     <td>
