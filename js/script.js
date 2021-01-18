@@ -1,15 +1,9 @@
-// if (document.readyState == "loading") {
-//   document.addEventListener("DOMContentLoaded", ready);
-// } else {
-//   ready();
-// }
-
-// function ready() {}
-
+// select the elements
 const addToCartButtons = document.getElementsByClassName("addToCartBtn");
 const removeFromCartButtons = document.getElementsByClassName("btn-danger");
 const quantityInputs = document.getElementsByClassName("cartQuantity");
 
+// event listeners
 for (let i = 0; i < addToCartButtons.length; i++) {
   let addToCartBtn = addToCartButtons[i];
   addToCartBtn.addEventListener("click", addToCart);
@@ -25,6 +19,9 @@ for (let i = 0; i < quantityInputs.length; i++) {
   input.addEventListener("change", changedQuantity);
 }
 
+document.querySelector(".purchaseBtn").addEventListener("click", purchaseCart);
+
+// funtions
 function addToCart(event) {
   const buttonClicked = event.target;
   const card = buttonClicked.parentElement.parentElement;
@@ -97,3 +94,13 @@ const updateCartTotal = function () {
   }
   document.querySelector(".cartTotalPrice").innerText = total;
 };
+
+function purchaseCart() {
+  alert("Thanks You For Your Purchase!");
+  const cartItems = document.querySelector(".cartItems");
+
+  while (cartItems.hasChildNodes()) {
+    cartItems.removeChild(cartItems.firstChild);
+  }
+  updateCartTotal();
+}
