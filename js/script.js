@@ -100,7 +100,7 @@ function purchaseCart() {
   const cartItems = document.querySelector(".cartItems");
 
   if (cartItems.hasChildNodes()) {
-    alert("Thanks You For Your Purchase!");
+    alert("Thanks For Your Purchase!");
     document.querySelector(".purchaseBtn").setAttribute("disabled", "");
   }
 
