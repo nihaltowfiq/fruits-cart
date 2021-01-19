@@ -71,6 +71,7 @@ function removeFromCart(event) {
   const buttonClicked = event.target;
   buttonClicked.parentElement.parentElement.remove();
   updateCartTotal();
+  makePurchaseBtnDisabled();
 }
 
 function changedQuantity(event) {
@@ -95,6 +96,13 @@ const updateCartTotal = function () {
   }
   document.querySelector(".cartTotalPrice").innerText = total;
 };
+
+function makePurchaseBtnDisabled() {
+  const cartTotalPrice = document.querySelector(".cartTotalPrice");
+  if (cartTotalPrice.innerText == 0) {
+    document.querySelector(".purchaseBtn").setAttribute("disabled", "");
+  }
+}
 
 function purchaseCart() {
   const cartItems = document.querySelector(".cartItems");
